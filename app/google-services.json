@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "723367478518",
+    "firebase_url": "https://spreadly-core.firebaseio.com",
+    "project_id": "spreadly-core",
+    "storage_bucket": "spreadly-core.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:723367478518:android:e85b86cab61fc70b3198d7",
+        "android_client_info": {
+          "package_name": "com.funnelmik.spreadly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "723367478518-i306ms9863ll86ms3mpm6qrq9p8cfbtf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCquvgvUNVeOTOJXQUP0zQC4spHv86l8dU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "723367478518-i306ms9863ll86ms3mpm6qrq9p8cfbtf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "723367478518-6l090018gp8ft3nvaf4dfcd57qk4mp6c.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "swashbuckle.Spreadly"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
