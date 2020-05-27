@@ -3,24 +3,35 @@ package com.funnelmik.spreadly
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-
+import android.widget.ExpandableListView
 
 
 @Suppress("UNCHECKED_CAST")
 class MenuActivity : AppCompatActivity() {
 
-    var menu: MutableMap<String, Array<MenuItem>> = mutableMapOf()
+    private var menu: MutableMap<String, List<MenuItem>> = mutableMapOf()
+    private var listView: ExpandableListView? = null
+    private var listAdapter: ExpandableListAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu2)
 
-        val menuId = intent.getStringExtra(URL).replace("spreadly://?", "", true)
+        val menuId = intent.getStringExtra(URL)?.replace("spreadly://?", "", true) ?: "Error ID"
+        listView = findViewById<ExpandableListView>(R.id.MenuView)
 
-        readFirebase(menuId)
+
+
+        readFirebase(menuId, listView!!)
     }
 
-    private fun readFirebase(menuId: String) {
+    private fun updateUI(listView: ExpandableListView) {
+        listAdapter = ExpandableListAdapter(this, menu, menu.keys.toList())
+        listView.setAdapter(listAdapter)
+
+    }
+
+    private fun readFirebase(menuId: String, listView: ExpandableListView) {
         DB.collection("clients").document(menuId).collection("menu").get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
@@ -43,15 +54,16 @@ class MenuActivity : AppCompatActivity() {
                     )
 
                     if (menu.containsKey(type)) {
-                        var section = menu[type] as Array<MenuItem>
+                        val section = (menu[type] as List<MenuItem>).toMutableList()
                         section += menuItem
                         menu[type] = section
                     } else {
-                        menu[type] = arrayOf<MenuItem>(menuItem)
+                        menu[type] = listOf<MenuItem>(menuItem)
                     }
 
                     // Log.d("DATA", menuItem.toString())
                 }
+                updateUI(listView)
             }
             .addOnFailureListener { exception ->
                 // Error Getting documents from Firebase

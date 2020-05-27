@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MenuActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/MenuView">
+
+        </ExpandableListView>
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
