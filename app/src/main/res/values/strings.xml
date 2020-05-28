@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Spreadly</string>
+    <string name="item_image">Image of the menu item.</string>
+    <string name="default_item_title">Default Item</string>
+    <string name="menu_detail_transition_title">Menu:Detail:Transition:Title</string>
+    <string name="menu_detail_transition_image">Menu:Detail:Transition:Image</string>
 </resources>

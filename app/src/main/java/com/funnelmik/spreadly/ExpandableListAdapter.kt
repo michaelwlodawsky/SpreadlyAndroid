@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 class ExpandableListAdapter constructor(
     private var context: Context,
@@ -74,10 +76,12 @@ class ExpandableListAdapter constructor(
             val inflator: LayoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             view = inflator.inflate(R.layout.menu_item, null)
         }
-        val menuItem: TextView = view!!.findViewById(R.id.menuItem) as TextView
+        val menuItem: TextView = view!!.findViewById(R.id.menuItemTitle) as TextView
+        val menuImage: ImageView = view.findViewById(R.id.menuItemImage) as ImageView
         // Customize here
+        menuImage.setImageResource(R.drawable.default_image)
         menuItem.text = itemName
-        return menuItem
+        return view
     }
 
     override fun getChildId(groupPosition: Int, childPosition: Int): Long {

@@ -1,5 +1,16 @@
 package com.funnelmik.spreadly
 
+const val NAME: String = "name"
+const val TYPE: String = "type"
+const val PRICE: String = "price"
+const val DESCRIPTION: String = "description"
+const val INGREDIENTS: String = "ingredients"
+const val SIDES: String = "sides"
+const val PESCATARIAN: String = "pescatarian"
+const val GF: String = "gf"
+const val VEGAN: String = "vegan"
+const val VEGETARIAN: String = "vegetarian"
+
 data class MenuItem(
     val name: String,
     val type: String,
