@@ -81,27 +81,16 @@ class MenuActivity : AppCompatActivity() {
             for (item: MenuItem in itemList) {
                 if (item.imageURL != EMPTY_STRING) {
                     val imageRef = storageRef.getReferenceFromUrl(item.imageURL)
-                    Log.i("CHECK***", imageRef.path)
-                    Log.i("CHECK", imageRef.toString())
-                    val test = storageRef.reference.child(imageRef.path)
-                    test.getBytes(TWO_MB).addOnSuccessListener { data: ByteArray ->
-                        Log.i("CHECK***", "2")
+                    imageRef.getBytes(TWO_MB).addOnSuccessListener { data: ByteArray ->
                         item.image = data
-                        latch.countDown()
                     }.addOnFailureListener { exception: Exception ->
-                        Log.i("CHECK***", "3")
                         Log.e("FIREBASE_STORAGE_ERROR", exception.toString())
-                        latch.countDown()
-                    }.addOnCompleteListener {
-                        Log.i("CHECK***", "test")
-                    }.addOnCanceledListener {
-                        Log.i("CHECK", "DID we get cancelled?")
                     }
+                    latch.countDown()
                 }
             }
         }
         latch.await()
-        Log.i("CHECK***", "4")
         updateUI(listView)
     }
 
