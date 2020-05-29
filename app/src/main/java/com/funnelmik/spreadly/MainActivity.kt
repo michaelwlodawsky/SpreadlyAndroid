@@ -11,8 +11,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.activity_main.*
 
-const val URL = "url"
-val DB = Firebase.firestore
+
 
 class MainActivity : AppCompatActivity() {
 

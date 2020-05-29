@@ -1,5 +1,9 @@
 package com.funnelmik.spreadly
 
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+
 const val NAME: String = "name"
 const val TYPE: String = "type"
 const val PRICE: String = "price"
@@ -10,6 +14,16 @@ const val PESCATARIAN: String = "pescatarian"
 const val GF: String = "gf"
 const val VEGAN: String = "vegan"
 const val VEGETARIAN: String = "vegetarian"
+const val URL = "url"
+const val IMAGE = "image"
+const val EMPTY_STRING = ""
+
+const val TWO_MB: Long = 1024 * 1024 * 2
+
+
+val db = Firebase.firestore
+val storageRef = Firebase.storage
+
 
 data class MenuItem(
     val name: String,
@@ -23,4 +37,6 @@ data class MenuItem(
     val vegan: Boolean = false,
     val vegetarian: Boolean = false,
     val imageURL: String = ""
-)
+) {
+    var image: ByteArray? = null
+}

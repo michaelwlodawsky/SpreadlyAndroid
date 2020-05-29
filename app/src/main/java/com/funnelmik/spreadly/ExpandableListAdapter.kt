@@ -70,7 +70,7 @@ class ExpandableListAdapter constructor(
         parent: ViewGroup?
     ): View {
         // TODO: This is where we customize the menu item labels view
-        val itemName: String = getChild(groupPosition, childPosition) as String
+        val item: MenuItem? = menu[menuHeaders[groupPosition]]?.get(childPosition)
         var view: View? = convertView
         if (view == null) {
             val inflator: LayoutInflater = this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -79,8 +79,12 @@ class ExpandableListAdapter constructor(
         val menuItem: TextView = view!!.findViewById(R.id.menuItemTitle) as TextView
         val menuImage: ImageView = view.findViewById(R.id.menuItemImage) as ImageView
         // Customize here
-        menuImage.setImageResource(R.drawable.default_image)
-        menuItem.text = itemName
+
+        if (item?.image != null) {
+            Utilities.setImageWithBytes(menuImage, item.image)
+        }
+        //Utilities.setImageWithBytes(data = item?.image ?: byteArrayOf(), view = menuImage)
+        menuItem.text = item?.name ?: "Name Error"
         return view
     }
 
